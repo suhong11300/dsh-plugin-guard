@@ -73,7 +73,7 @@ async function call(suffix,method='POST',body='{}'){
 }
 async function waitClosed(){for(let i=0;i<100;i++){const s=await call('/state','GET');if(!s.body.running&&!s.body.stopping)return s;await new Promise(r=>setTimeout(r,100));}throw Error('stub child did not exit');}
 try{
- const start=await call('/run','POST','{"probeTimeoutSec":5}');const end=await waitClosed();let args=null;try{args=JSON.parse(fs.readFileSync(path.join(out,'arguments.json'),'utf8'));}catch(e){console.log('DEBUG start='+JSON.stringify(start).slice(0,300));console.log('DEBUG lastRun='+JSON.stringify(end.body.lastRunResult).slice(0,1500));console.log('DEBUG outFiles='+JSON.stringify(fs.existsSync(out)?fs.readdirSync(out):'missing'));console.log('DEBUG stub='+fs.readFileSync(stub,'utf8').slice(0,400));throw e;}
+ const start=await call('/run','POST','{"probeTimeoutSec":5}');const end=await waitClosed();let args=null;try{args=JSON.parse(fs.readFileSync(path.join(out,'arguments.json'),'utf8'));}catch(e){throw new Error('stub child did not record arguments: '+e.message);}
  check('host passes one timeout and consistent home/data paths',start.code===200&&end.body.lastRunResult.exitCode===0&&args.timeout===5&&args.home===home&&args.dir===out,args);
  check('extraArgs cannot enable Apply or override safe arguments',args.takeoverMode==='review'&&args.noSnapshot===true&&args.home===home,args);
  fs.writeFileSync(stub,stubBody+'Start-Sleep -Seconds 15\n');
