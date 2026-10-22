@@ -229,6 +229,8 @@ All three suites (`safety` / `regression` / `review-regression`) build fake prof
 - **desktop cannot use the CLI**: Electron owns that profile - `pnpm add`, hand-write `dsh.profile.bundles`, then restart.
 - **Panel buttons are same-origin only**: the `x-plugin-guard: 1` header, a loopback origin and `allowActions: true` are all required.
 
+Compatibility notes per DSH version live in [`docs/compatibility.md`](docs/compatibility.md) (Chinese).
+
 ## License
 
 [MIT](LICENSE) © 2026 suhong11300
