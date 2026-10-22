@@ -11,6 +11,7 @@
 - 计划任务改指随包 `backend/run-guard.cmd`；profile patch 显式 `allowActions: true`。
 - `tests/` 同步到 0.3.0 语义（模式互斥、Apply/Revert 事务、`extraArgs` 白名单、N3 门槛），新增 `tests/run-all.mjs` 与 `npm test`。
 - `docs/compatibility.md` 更新档位与门槛描述。
+- README 改为中英双语：`README.md`（英文，默认）+ `README.zh-CN.md`（中文），顶部语言条互链，`package.json` 的 `files` 收录两份。
 
 # 0.2.1-safety.2 — 2026-10-22
 
