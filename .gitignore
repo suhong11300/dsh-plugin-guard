@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# runtime output (guard writes these under DSH_GUARD_DIR, but keep the repo clean)
+*.log
+.plugin-guard.lock
+state.json
+reports/
+staging/
+snapshots/
+tmp/
+
+# local scratch from manual runs
+_*.ps1
+_*.mjs
+ledger-*.json
+
+# editor / OS
+.vscode/
+Thumbs.db
+.DS_Store
